@@ -51,15 +51,16 @@
   font-weight: bold;
   margin-top: 28px;
   margin-bottom: 8px;
-  color: inherit;
+  font-size: 1.5rem;
+  color: rgbrgb(66,72,33);
 }
 
 .team-boxed .item .title {
   text-transform: uppercase;
-  font-weight: bold;
-  color: black;
+  /* font-weight: bold; */
+  color: rgbrgb(66,72,33);
   letter-spacing: 2px;
-  font-size: 13px;
+  font-size: 20px;
 }
 
 .team-boxed .item .description {
