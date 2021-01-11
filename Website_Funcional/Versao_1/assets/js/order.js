@@ -3,12 +3,13 @@ var paym = ''
 var resumo = ''
 $( document ).ready(function() {
     $.ajax({
-        url: "http://localhost:8080/getInfo?type=Cliente",
+        url: "http://websiteams.ddns.net:8080/getInfo?type=Cliente",
         type: "GET",
         xhrFields: {
             withCredentials: true
         },
         success:function(response) {
+	    print("DEU")
             info = JSON.parse(response)
             var order = JSON.parse(localStorage.getItem('Order'));
             resumo = '<p class="text-black font-weight-bold">Dados:</p><p class="text-black font-weight-light itemsText">Nome: '+info['nome1']+' '+info['nome2']+'</p><p class="text-black font-weight-light itemsText">Tel: '+info['tel']+'</p><hr><p class="text-black font-weight-bold">Resumo:</p>'
@@ -22,8 +23,9 @@ $( document ).ready(function() {
             document.getElementById('items').innerHTML = resumo;
         },
         error:function(){
-            alert("O seu login expirou!")
-            window.location.href = "login.html";
+            console.log("NAO DEU")
+		//alert("O seu login expirou!")
+            //window.location.href = "login.html";
         }
     });
     // Ir a base de dados buscar o primeiro cartao e o primeiro endereço e associar

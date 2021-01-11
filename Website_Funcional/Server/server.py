@@ -391,12 +391,12 @@ def checkToken(request,typeOf,typeOfAlt = None):
 #com o user id
 def generate_jwt_token(content):
     encoded_content = jwt.encode(content, JWT_SECRET_KEY, algorithm="HS256")
-    token = str(encoded_content).split("'")[1]
+    token = str(encoded_content).split("'")[0]
     return token
 
 def decode_jwt_token(auth_token):
     try:
-        payload = jwt.decode(auth_token, JWT_SECRET_KEY)
+        payload = jwt.decode(auth_token, JWT_SECRET_KEY, algorithms=["HS256"])
         return payload
     except jwt.ExpiredSignatureError:
         return 'Expired'
