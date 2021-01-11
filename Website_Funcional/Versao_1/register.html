@@ -71,7 +71,7 @@
                                 </div>
                                 <div id="input-grp-double-3" class="form-row mt-4">
                                     <div class="col-12 col-sm-6"><input class="form-control multisteps-form__input" id="tel" type="text" placeholder="Telemóvel"></div>
-                                    <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control multisteps-form__input" id="data" type="text" placeholder="Data de Nascimento"></div>
+                                    <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control multisteps-form__input" id="data" type="text" placeholder="Data de Nascimento (dd/mm/aaaa)"></div>
                                 </div>
                                 <div id="next-button" class="button-row d-flex mt-4"><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next" style="background: #83ad47;border-color: #83ad47;"><i class="fa fa-chevron-right js-btn-next"></i></button></div>
                             </div>
@@ -127,7 +127,28 @@
     <script src="assets/js/Multi-step-form.js"></script>
     <script src="assets/js/Studious-selectbox.js"></script>
     <script>
+        function isValidEmailAddress(emailAddress) {
+            var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+            // alert( pattern.test(emailAddress) );
+            return pattern.test(emailAddress);
+        };
+        function isvaliddate(input){
+            var reg = /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/;
+            if (!input.match(reg)) {
+                return false
+            }
+            return true
+        }
+        var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
         $('#lastButton').click(function(){
+            if(!isValidEmailAddress(document.getElementById('email').value)){
+                alert("Email inválido!")
+                return
+            }
+            if (!(isvaliddate(document.getElementById('data').value))) {
+                alert("Data no formato inválido")
+                return 
+            }
             $.ajax({
                 url: "http://websiteams.ddns.net:8080/register",
                 type: "POST",

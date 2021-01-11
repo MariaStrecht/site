@@ -121,7 +121,27 @@
     <script src="assets/js/Multi-step-form.js"></script>
     <script src="assets/js/Studious-selectbox.js"></script>
     <script>
+        function isValidEmailAddress(emailAddress) {
+            var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+            // alert( pattern.test(emailAddress) );
+            return pattern.test(emailAddress);
+        };
+        function isvaliddate(input){
+            var reg = /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/;
+            if (!input.match(reg)) {
+                return false
+            }
+            return true
+        }
         $('#lastButton').click(function(){
+            if(!isValidEmailAddress(document.getElementById('email').value)){
+                alert("Email inválido!")
+                return
+            }
+            if (!(isvaliddate(document.getElementById('data').value))) {
+                alert("Data no formato inválido")
+                return 
+            }
             $.ajax({
                 url: "http://websiteams.ddns.net:8080/register",
                 type: "POST",

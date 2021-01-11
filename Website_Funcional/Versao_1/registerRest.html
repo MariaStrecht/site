@@ -128,12 +128,21 @@
     <script src="assets/js/Multi-step-form.js?v=1"></script>
     <script src="assets/js/Studious-selectbox.js"></script>
     <script>
+        function isValidEmailAddress(emailAddress) {
+            var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+            // alert( pattern.test(emailAddress) );
+            return pattern.test(emailAddress);
+        };
         const actualBtn = document.getElementById('actual-btn');
         const fileChosen = document.getElementById('file-chosen');
         actualBtn.addEventListener('change', function(){
         fileChosen.textContent = this.files[0].name
         })
         $('#lastButton').click(function(){
+            if(!isValidEmailAddress(document.getElementById('email').value)){
+                alert("Email inválido!")
+                return
+            }
             var form_data = new FormData();
             form_data.append('file', $('#actual-btn').prop('files')[0]);
             $.ajax({
