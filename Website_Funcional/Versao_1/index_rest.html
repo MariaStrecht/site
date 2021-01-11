@@ -98,7 +98,7 @@
             
         $(document).ready(function(){
             $.ajax({
-                url: "http://localhost:8080/getInfo?type=Restaurante",
+                url: "http://websiteams.ddns.net:8080/getInfo?type=Restaurante",
                 type: "GET",
                 xhrFields: {
                     withCredentials: true
@@ -109,7 +109,7 @@
                         console.log(info['id'])
                         document.getElementById('nome').innerHTML = info['nome']
                         document.getElementById('morada').innerHTML = info['endr'] + ", " + info['cidade'] +  ", " + info['pais'] + ", " + info['estado'] +  ", " + info['codPos']
-                        document.getElementById('mainImage').src = "http://localhost:8080/static/img/long_" + info['img']
+                        document.getElementById('mainImage').src = "http://websiteams.ddns.net:8080/static/img/long_" + info['img']
                         teste = "restauranteOrder2.html?id="+info['id']
                         $('#editRest').click(function(){
                             window.location.href = teste;
@@ -122,7 +122,7 @@
                 }
             });
             $.ajax({
-                url: "http://localhost:8080/getPedidos?type=Restaurante",
+                url: "http://websiteams.ddns.net:8080/getPedidos?type=Restaurante",
                 type: "GET",
                 xhrFields: {
                     withCredentials: true
@@ -136,7 +136,7 @@
                         event.stopPropagation();
                         event.stopImmediatePropagation();
                         $.ajax({
-                            url: "http://localhost:8080/confirmOrder",
+                            url: "http://websiteams.ddns.net:8080/confirmOrder",
                             type: "POST",
                             xhrFields: {
                                 withCredentials: true

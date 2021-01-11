@@ -120,7 +120,7 @@
                             <!-- Tenho que mudar o id dos icones e o display-numero-->
                             <p style='padding: 0px;margin: 0px;height: 0px;'>Paragraph</p><a class="iconC" href="#"><i class='fa fa-minus-circle icon1' id='`+id+`''></i></a></div>
                     </div>
-                    <div class='col p-0'><img class='imgIcon' src='http://localhost:8080/static/img/food_`+img+`'></div>
+                    <div class='col p-0'><img class='imgIcon' src='http://websiteams.ddns.net:8080/static/img/food_`+img+`'></div>
                 </div>
             </div>
             <div class='modal fade' id='modal`+id+`' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
@@ -149,14 +149,14 @@
         $(document).ready(function(){
             const urlParams = new URLSearchParams(window.location.search);
             $.ajax({
-                url: "http://localhost:8080/getSpecInfo?type=Restaurante&id="+urlParams.get('id'),
+                url: "http://websiteams.ddns.net:8080/getSpecInfo?type=Restaurante&id="+urlParams.get('id'),
                 type: "GET",
                 xhrFields: {
                     withCredentials: true
                 },
                 success:function(response) {
                     info = JSON.parse(response)
-                    document.getElementById('mainImg').src = "http://localhost:8080/static/img/long_" + info['img']
+                    document.getElementById('mainImg').src = "http://websiteams.ddns.net:8080/static/img/long_" + info['img']
                     document.getElementById('nomeRest').innerHTML = info['nome']
                     document.getElementById('morada').innerHTML = info['endr'] + ", " + info['cidade'] + ", " + info['estado'] + "<br>" + info['pais'] +  ", " + info['codPos']
                     document.getElementById('tempo').innerHTML = info['tempo'] + " min"
@@ -167,7 +167,7 @@
                 }
             });
             $.ajax({
-                url: "http://localhost:8080/getRestaurantPlates?id="+urlParams.get('id'),
+                url: "http://websiteams.ddns.net:8080/getRestaurantPlates?id="+urlParams.get('id'),
                 type: "GET",
                 xhrFields: {
                     withCredentials: true
@@ -181,7 +181,7 @@
                         event.stopPropagation();
                         event.stopImmediatePropagation();
                         $.ajax({
-                            url: "http://localhost:8080/removePrato",
+                            url: "http://websiteams.ddns.net:8080/removePrato",
                             type: "POST",
                             xhrFields: {
                                 withCredentials: true
@@ -218,7 +218,7 @@
             form_data.append('file', $('#actual-btn').prop('files')[0]);
             $.ajax({
                 type: 'POST',
-                url:  'http://localhost:8080/uploadImage',
+                url:  'http://websiteams.ddns.net:8080/uploadImage',
                 data: form_data,
                 contentType: false,
                 cache: false,
@@ -235,7 +235,7 @@
                 'img' : $('#actual-btn').prop('files')[0]['name'],
             }
             $.ajax({
-                url: "http://localhost:8080/newPrato",
+                url: "http://websiteams.ddns.net:8080/newPrato",
                 type: "POST",
                 xhrFields: {
                     withCredentials: true

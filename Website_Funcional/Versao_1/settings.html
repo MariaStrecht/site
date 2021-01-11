@@ -188,7 +188,7 @@
     <script>
         $('#subNewAddr').click(function(){
             $.ajax({
-                url: "http://localhost:8080/insertMorada",
+                url: "http://websiteams.ddns.net:8080/insertMorada",
                 type: "POST",
                 xhrFields: {
                     withCredentials: true
@@ -215,7 +215,7 @@
         })
         $('#addNewCartao').click(function(){
             $.ajax({
-                url: "http://localhost:8080/insertCartao",
+                url: "http://websiteams.ddns.net:8080/insertCartao",
                 type: "POST",
                 xhrFields: {
                     withCredentials: true
@@ -240,7 +240,7 @@
         })
         $(document).ready(function(){
             $.ajax({
-                url: "http://localhost:8080/getInfo?type=Cliente",
+                url: "http://websiteams.ddns.net:8080/getInfo?type=Cliente",
                 type: "GET",
                 xhrFields: {
                     withCredentials: true
@@ -261,7 +261,7 @@
                 }
             });
             $.ajax({
-                url: "http://localhost:8080/getCardsAndAddr",
+                url: "http://websiteams.ddns.net:8080/getCardsAndAddr",
                 type: "GET",
                 xhrFields: {
                     withCredentials: true
@@ -317,7 +317,7 @@
                     });
                     $('#mod').click(function(){
                         $.ajax({
-                            url: "http://localhost:8080/modifyCliente",
+                            url: "http://websiteams.ddns.net:8080/modifyCliente",
                             type: "POST",
                             xhrFields: {
                                 withCredentials: true

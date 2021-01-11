@@ -101,7 +101,7 @@
     <script>
         $('#updateInfo').click(function(){
             $.ajax({
-                url: "http://localhost:8080/modifyRest",
+                url: "http://websiteams.ddns.net:8080/modifyRest",
                 type: "POST",
                 xhrFields: {
                     withCredentials: true
@@ -133,7 +133,7 @@
         })
         $(document).ready(function(){
             $.ajax({
-                url: "http://localhost:8080/getInfo?type=Restaurante",
+                url: "http://websiteams.ddns.net:8080/getInfo?type=Restaurante",
                 type: "GET",
                 xhrFields: {
                     withCredentials: true

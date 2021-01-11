@@ -102,7 +102,7 @@
     <script>
         $('#updateInfo').click(function(){
             $.ajax({
-                url: "http://localhost:8080/modifyEst",
+                url: "http://websiteams.ddns.net:8080/modifyEst",
                 type: "POST",
                 xhrFields: {
                     withCredentials: true
@@ -136,7 +136,7 @@
         })
         $(document).ready(function(){
             $.ajax({
-                url: "http://localhost:8080/getInfo?type=Estafeta",
+                url: "http://websiteams.ddns.net:8080/getInfo?type=Estafeta",
                 type: "GET",
                 xhrFields: {
                     withCredentials: true

@@ -112,7 +112,7 @@
                 }
             });
             $.ajax({
-                url: "http://localhost:8080/getPedidos?type=Estafeta",
+                url: "http://websiteams.ddns.net:8080/getPedidos?type=Estafeta",
                 type: "GET",
                 xhrFields: {
                     withCredentials: true
@@ -128,7 +128,7 @@
                         event.stopImmediatePropagation();
                         console.log(event['currentTarget']['id'])
                         $.ajax({
-                            url: "http://localhost:8080/removePedido",
+                            url: "http://websiteams.ddns.net:8080/removePedido",
                             type: "POST",
                             xhrFields: {
                                 withCredentials: true

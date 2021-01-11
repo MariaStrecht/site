@@ -199,7 +199,7 @@
         })
         $('#sendOrder').click(function(){
             $.ajax({
-                url: "http://localhost:8080/sendPedido",
+                url: "http://websiteams.ddns.net:8080/sendPedido",
                 type: "POST",
                 xhrFields: {
                     withCredentials: true
@@ -219,7 +219,7 @@
         $(document).ready(function(){
             document.getElementById('restau').innerHTML = localStorage.getItem('Rest');
             $.ajax({
-                url: "http://localhost:8080/getCardsAndAddr",
+                url: "http://websiteams.ddns.net:8080/getCardsAndAddr",
                 type: "GET",
                 xhrFields: {
                     withCredentials: true
