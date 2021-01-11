@@ -225,7 +225,7 @@ def removeRestaurantPlate(idPrato,idRest):
     con.commit()
     return True
 
-def removeRestaurantPlate(idPedido):
+def removePedido12(idPedido):
     t = (idPedido)
     cur1.execute('DELETE FROM `pedidosPend` WHERE `id` LIKE ?', t)
     con.commit()

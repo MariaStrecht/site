@@ -2,8 +2,8 @@ from PIL import Image
 
 class _Image():
 
-    def __init__(self,path):
-        self.img = Image.open(path)
+    def __init__(self,img1):
+        self.img = Image.open(img1)
 
     def crop_to_aspect(self, aspect, divisor=1, alignx=0.5, aligny=0.5):
         """Crops an image to a given aspect ratio.

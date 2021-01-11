@@ -6,14 +6,16 @@ import datetime
 from utilsDB import *
 import jwt
 import json
-from PIL import Image
+from PIL import Image, ImageFile
 from imageConf import _Image
 import time
+import pathlib
 
 app = Flask(__name__)
 app.secret_key = 'teste123'
 CORS(app)
 JWT_SECRET_KEY = 't1NP63m4wnBg6nyHYKfmc2TpCOGI4nss'
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -54,6 +56,7 @@ def profile():
         resp = make_response("Erro!",404)
         resp.headers.add('Access-Control-Allow-Credentials','true')
         return resp
+    print(searchInfo(tipo,info))
     resp = make_response(json.dumps(searchInfo(tipo,info)))
     resp.headers.add('Access-Control-Allow-Credentials','true')
     return resp
@@ -215,7 +218,7 @@ def removePedido():
         resp = make_response("Erro!",404)
         resp.headers.add('Access-Control-Allow-Credentials','true')
         return resp
-    removeRestaurantPlate(idpedido)
+    removePedido12(idpedido)
     resp = make_response("Sucesso!")
     resp.headers.add('Access-Control-Allow-Credentials','true')
     return resp
@@ -310,9 +313,12 @@ def sendPedido():
 
 @app.route('/uploadImage',methods=['GET','POST'])
 def upload():
-    isthisFile=request.files.get('file')
+    #isthisFile = request.files['image']
+    print("dksladksaldkalwsdksaldksaldkasldksal")
+    isthisFile=request.files['file']
     isthisFile.save("./static/img/"+isthisFile.filename)
-    time.sleep(1)
+    isthisFile.close()
+    print("PASEEI")
     cutImage("./static/img/"+isthisFile.filename,"./static/img/long_"+isthisFile.filename,1200,288)
     cutImage("./static/img/"+isthisFile.filename,"./static/img/short_"+isthisFile.filename,1300,1300)
     cutImage("./static/img/"+isthisFile.filename,"./static/img/food_"+isthisFile.filename,154,123)
@@ -405,9 +411,10 @@ def searchInfo(typeOf,info):
     elif typeOf == 'Restaurante':
         return getRestauranteInfo(info)
     
-def cutImage(path,destPath,width,height):
-    imgConf = _Image(path)
+def cutImage(img,destPath,width,height):
+    imgConf = _Image(img)
     img = imgConf.crop_to_aspect(width,height)
+    #imgConf.img.show()
     img.save(destPath)
 
 if __name__ == '__main__':
