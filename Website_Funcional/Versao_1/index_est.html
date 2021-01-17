@@ -96,7 +96,7 @@
         }
         $(document).ready(function(){
             $.ajax({
-                url: "http://localhost:8080/getInfo?type=Estafeta",
+                url: "http://websiteams.ddns.net:8080/getInfo?type=Estafeta",
                 type: "GET",
                 xhrFields: {
                     withCredentials: true
@@ -140,14 +140,15 @@
                                 location.reload()
                             },
                             error:function(){
-                                alert("O login expirou!")
+                                alert("Erro ao tentar remover")
+				location.reload()
                             }
                         });
                     })
                 },
                 error:function(){
                     alert("O seu login expirou!")
-                    //window.location.href = "login.html";
+                    window.location.href = "login.html";
                 }
             });
         });

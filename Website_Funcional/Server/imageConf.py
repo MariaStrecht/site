@@ -4,7 +4,7 @@ class _Image():
 
     def __init__(self,img1):
         self.img = Image.open(img1)
-
+        print(self.img)
     def crop_to_aspect(self, aspect, divisor=1, alignx=0.5, aligny=0.5):
         """Crops an image to a given aspect ratio.
         Args:
