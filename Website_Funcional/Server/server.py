@@ -314,8 +314,13 @@ def sendPedido():
 @app.route('/uploadImage',methods=['GET','POST'])
 def upload():
     #isthisFile = request.files['image']
+    print("ESTOUAKI ")
     print("dksladksaldkalwsdksaldksaldkasldksal")
     isthisFile=request.files['file']
+    print("olaaaa")
+    print(isthisFile)
+    print("akideu")
+    print("-/static/img/" + str(isthisFile.filename))
     isthisFile.save("./static/img/"+isthisFile.filename)
     isthisFile.close()
     print("PASEEI")

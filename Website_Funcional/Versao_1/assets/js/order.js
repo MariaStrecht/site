@@ -9,7 +9,6 @@ $( document ).ready(function() {
             withCredentials: true
         },
         success:function(response) {
-	    print("DEU")
             info = JSON.parse(response)
             var order = JSON.parse(localStorage.getItem('Order'));
             resumo = '<p class="text-black font-weight-bold">Dados:</p><p class="text-black font-weight-light itemsText">Nome: '+info['nome1']+' '+info['nome2']+'</p><p class="text-black font-weight-light itemsText">Tel: '+info['tel']+'</p><hr><p class="text-black font-weight-bold">Resumo:</p>'
@@ -23,9 +22,8 @@ $( document ).ready(function() {
             document.getElementById('items').innerHTML = resumo;
         },
         error:function(){
-            console.log("NAO DEU")
-		//alert("O seu login expirou!")
-            //window.location.href = "login.html";
+	    alert("O seu login expirou!")
+            window.location.href = "login.html";
         }
     });
     // Ir a base de dados buscar o primeiro cartao e o primeiro endereço e associar
